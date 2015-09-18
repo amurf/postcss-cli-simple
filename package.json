@@ -1,0 +1,16 @@
+{
+  "name": "postcss-cli-simple",
+  "version": "0.0.1",
+  "description": "CLI for postcss without the fuss",
+  "main": "index.js",
+  "bin": {
+    "postcss": "./bin/postcss"
+  },
+  "author": "Ashley Murphy <ash@strategicdata.com.au>",
+  "license": "MIT",
+  "dependencies": {
+    "postcss": "^5.0.5",
+    "q": "^1.4.1",
+    "yargs": "^3.25.0"
+  }
+}
