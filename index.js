@@ -1,15 +1,15 @@
 var argv = require('yargs')
-            .usage('postcss -i input_file -o <output_file>')
+            .usage('postcss -c <config_file> -i <input_file> -o <output_file>')
             .boolean('m')
-            .demand(['i', 'o'])
+            .demand(['i', 'o', 'c'])
             .argv;
 
 var input_file  = argv.i;
 var output_file = argv.o;
+var config_file = argv.c;
 var map_file    = argv.m
 
-
-var config  = require('./postcss');
+var config  = require(config_file);
 var plugins = config.map(function(plugin) {
     return require(plugin.name)(plugin.options);
 });
