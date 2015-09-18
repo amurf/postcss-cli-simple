@@ -21,11 +21,11 @@ var processor = require('postcss')(plugins);
 var readfile  = Q.denodeify(fs.readFile);
 
 readfile(input_file, 'utf-8').then(function(content) {
-    var result = processor.process(content, {from: input_file, to: output_file, map: map_file});
-    result.then(function(d, z) {
-        fs.writeFile(output_file, d.css);
-        if (d.map !== 'undefined' && map_file) {
-            fs.writeFile(output_file + '.map', d.map);
+    var processed = processor.process(content, {from: input_file, to: output_file, map: map_file});
+    processed.then(function(result) {
+        fs.writeFile(output_file, result.css);
+        if (result.map !== undefined && map_file) {
+            fs.writeFile(output_file + '.map', result.map);
         }
     }).catch(function(err){ console.log(err) });
 });
